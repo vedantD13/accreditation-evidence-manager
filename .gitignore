@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.local
+
+# Python
+backend/venv/
+backend/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Uploads and Database
+backend/uploads/
+backend/test.db
+backend/chroma_db/
+backend/chroma/
+
+# Docker
+.docker/
