@@ -1,7 +1,7 @@
 import string
 from typing import List, Tuple
 from sqlalchemy.orm import Session
-from models import AccreditationCriterion, DocumentMapping
+from models import AccreditationCriterion, DocumentMapping, to_uuid
 
 try:
     from sentence_transformers import SentenceTransformer, util
@@ -55,8 +55,8 @@ def map_document_to_metrics(document_id: str, document_type: str, ocr_text: str,
     if best_match:
         final_confidence = min(max(best_score, 0.1), 0.98)
         mapping = DocumentMapping(
-            document_id=document_id,
-            metric_id=best_match.id,
+            document_id=to_uuid(document_id),
+            metric_id=to_uuid(best_match.id),
             mapping_confidence=final_confidence
         )
         db.add(mapping)

@@ -5,6 +5,16 @@ import uuid
 from datetime import datetime
 from db import Base
 
+def to_uuid(val):
+    if val is None:
+        return None
+    if isinstance(val, uuid.UUID):
+        return val
+    try:
+        return uuid.UUID(str(val))
+    except (ValueError, AttributeError):
+        return val
+
 class RoleEnum(str, enum.Enum):
     faculty = "faculty"
     hod = "hod"
